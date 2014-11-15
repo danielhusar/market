@@ -1,0 +1,22 @@
+{
+  "name": "Steam",
+  "description": "Steam",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "js": ["inject.js"],
+      "matches": [
+        "*://*.steamcommunity.com/market/*"
+      ]
+    }
+  ],
+  "homepage_url": "https://github.com/danielhusar/piratebay-movie-info",
+  "icons": {
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+  "web_accessible_resources": [ "home.js", "market.js" ]
+
+}
