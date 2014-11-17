@@ -1,7 +1,7 @@
 {
   "name": "Steam market",
   "description": "Steam market csgo modifications",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "homepage_url": "https://github.com/danielhusar/steam-market",
   "icons": {
@@ -18,11 +18,24 @@
     }
   ],
   "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "chrome://favicon/",
     "storage"
   ],
+  "externally_connectable": {
+    "matches": [
+      "*://*.steamcommunity.com/market/*"
+    ]
+  },
   "options_ui": {
     "page": "options.html",
     "chrome_style": true
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
   },
   "web_accessible_resources": [ "home.js", "market.js" ]
 
