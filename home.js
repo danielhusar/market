@@ -8,8 +8,6 @@
 
     var whitelistRegexp = new RegExp(response.replace(/^\,|\,$/g, '').replace(/\,/gi, '|'), 'gi');
 
-    console.log(whitelistRegexp);
-
     window.LoadRecentListings = function ( id, type, rows ) {
       if ( g_bBusyLoadingMore )
       {

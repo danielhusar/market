@@ -17,25 +17,19 @@
       ]
     }
   ],
-  "permissions": [
-    "tabs",
-    "http://*/*",
-    "https://*/*",
-    "chrome://favicon/",
-    "storage"
-  ],
+  "permissions": ["storage"],
   "externally_connectable": {
     "matches": [
       "*://*.steamcommunity.com/market/*"
     ]
   },
-  "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
-  },
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
   },
   "web_accessible_resources": [ "home.js", "market.js" ]
 
