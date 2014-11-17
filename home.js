@@ -1,4 +1,4 @@
-(function(window, document, $J, undefined){
+(function (window, document, $J, undefined) {
   'use strict';
 
   $J('body').append('<div id="hold" style="display:none;"></div>');
@@ -9,14 +9,12 @@
     var whitelistRegexp = new RegExp(response.replace(/^\,|\,$/g, '').replace(/\,/gi, '|'), 'gi');
 
     window.LoadRecentListings = function ( id, type, rows ) {
-      if ( g_bBusyLoadingMore )
-      {
+      if (g_bBusyLoadingMore) {
         return;
       }
 
       var elShowMore = $(id);
       var elRows = $(rows);
-
       $J('#sellListingsMore').css('color', '#171717');
 
       g_bBusyLoadingMore = true;
@@ -28,12 +26,10 @@
           currency: typeof( g_rgWalletInfo ) != 'undefined' ? g_rgWalletInfo['wallet_currency'] : 1
         },
         onSuccess: function( transport ) {
-          if ( transport.responseJSON )
-          {
+          if ( transport.responseJSON ) {
             var response = transport.responseJSON;
 
-            if ( response.assets.length != 0 )
-            {
+            if ( response.assets.length != 0 ) {
               g_rgRecents[type]['time'] = response.last_time;
               g_rgRecents[type]['listing'] = response.last_listing;
 
@@ -70,9 +66,8 @@
             }
           }
         },
-        onComplete: function() {
+        onComplete: function () {
           g_bBusyLoadingMore = false;
-
         }
       });
     };

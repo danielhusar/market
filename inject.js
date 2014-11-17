@@ -1,13 +1,18 @@
-var s = document.createElement('script');
+(function () {
+  'use strict';
 
-if (window.location.pathname === '/market/search') {
-  s.src = chrome.extension.getURL('market.js');
-} else if(window.location.pathname.match(/\/market\/?/)) {
-  s.src = chrome.extension.getURL('home.js');
-}
+  var s = document.createElement('script');
 
-s.onload = function() {
-  this.parentNode.removeChild(this);
-};
+  if (window.location.pathname === '/market/search') {
+    s.src = chrome.extension.getURL('market.js');
+  } else if (window.location.pathname.match(/\/market\/?/)) {
+    s.src = chrome.extension.getURL('home.js');
+  }
 
-(document.head || document.documentElement).appendChild(s);
+  s.onload = function () {
+    this.parentNode.removeChild(this);
+  };
+
+  (document.head || document.documentElement).appendChild(s);
+
+})();
