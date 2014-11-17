@@ -3,6 +3,12 @@
   "description": "Steam market csgo modifications",
   "version": "0.0.1",
   "manifest_version": 2,
+  "homepage_url": "https://github.com/danielhusar/steam-market",
+  "icons": {
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
   "content_scripts": [
     {
       "js": ["inject.js"],
@@ -11,11 +17,12 @@
       ]
     }
   ],
-  "homepage_url": "https://github.com/danielhusar/steam-market",
-  "icons": {
-    "16": "icon_16.png",
-    "48": "icon_48.png",
-    "128": "icon_128.png"
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
   },
   "web_accessible_resources": [ "home.js", "market.js" ]
 

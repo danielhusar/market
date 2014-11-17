@@ -1,6 +1,8 @@
 (function(window, document, $J, undefined){
   'use strict';
 
+  g_nMillisPopularRefresh = 600000;
+
   $J('body').append('<div id="hold" style="display:none;"></div>');
   var whitelistRegexp = /knife|karambit|bayonet|awp|m4a4|m4a1|ak-47|glock-18/gi;
   var cache = {};
