@@ -5,7 +5,7 @@
 
   if (window.location.pathname === '/market/search') {
     s.src = chrome.extension.getURL('market.js');
-  } else if (window.location.pathname.match(/\/market\/?/)) {
+  } else if (window.location.pathname.match(/\/market\/?$/)) {
     s.src = chrome.extension.getURL('home.js');
   }
 
