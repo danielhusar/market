@@ -3,18 +3,28 @@
 <head>
   <title>My Test Extension Options</title>
   <style>
-    body: { padding: 10px; }
-    textarea {border-color: #ccc; margin: 10px 0;}
-    #status{position: absolute; left: 70px; margin-top: 6px;}
+    *{box-sizing: border-box;}
+    body { padding: 10px; width: 320px; font-family: helvetica, arial, sans-serif; }
+    textarea, input {border: 1px solid #ccc; margin: 10px 0 !important; padding: 5px; width: 100%;}
+    textarea:focus, input:focus{border-color: #4169E1; outline: none;}
+    button{border: none !important; background: #4169E1 !important; color: white !important; padding: 5px 30px; border-radius: 3px; text-transform: uppercase; width: 120px; box-shadow: none !important; text-shadow: none !important; min-height: 0 !important; vertical-align: middle; line-height: 18px !important; padding-bottom: 2px !important; }
+    button:hover{cursor: pointer; background: #274293 !important;}
+    label{display: block; cursor: pointer;}
+    #status{position: absolute; left: 160px; margin-top: 17px;}
+    #rate{width: 120px;}
+    .button{margin-top: 10px;}
   </style>
 </head>
 
 <body>
-  CS:GO items separated by comma
+  <label for="items">CS:GO items separated by comma:</label>
   <textarea id="items" cols="50" rows="10"></textarea>
 
+  <label for="rate">Refresh Rate: (miliseconds)</label>
+  <input id="rate">
+
   <div id="status"></div>
-  <div>
+  <div class="button">
     <button id="save">Save</button>
   </div>
 

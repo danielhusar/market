@@ -4,18 +4,20 @@
   $J('body').append('<div id="hold" style="display:none;"></div>');
   var cache = {};
 
-  chrome.runtime.sendMessage('pakdjbidllacainmhhdoejaoeahkjjja', {action: 'getstorage'}, function(response){
+  chrome.runtime.sendMessage('pakdjbidllacainmhhdoejaoeahkjjja', {action: 'getstorage'}, function (response) {
 
-    var whitelistRegexp = new RegExp(response.replace(/^\,|\,$/g, '').replace(/\,/gi, '|'), 'gi');
+    var whitelistRegexp = new RegExp(response.weapons.replace(/^\,|\,$/g, '').replace(/\,/gi, '|'), 'gi');
 
     window.LoadRecentListings = function ( id, type, rows ) {
+
+      $J('#sellListingsMore').css('color', '#171717');
       if (g_bBusyLoadingMore) {
         return;
       }
 
       var elShowMore = $(id);
       var elRows = $(rows);
-      $J('#sellListingsMore').css('color', '#171717');
+
 
       g_bBusyLoadingMore = true;
       new Ajax.Request( 'http://steamcommunity.com/market/recent', {
@@ -34,6 +36,7 @@
               g_rgRecents[type]['listing'] = response.last_listing;
 
 
+              // start from custom modifications and filtering
               $J('#hold').html(response.results_html);
               $J('#hold .market_listing_row').each(function () {
                 var text = $J(this).html();
@@ -55,19 +58,19 @@
                 }
               });
               response.results_html = $J('#hold').html();
+              //end of custom modifications
 
               elRows.insert( { 'bottom' : response.results_html } );
               MergeWithAssetArray( response.assets );
               MergeWithListingInfoArray( response.listinginfo );
               MergeWithAppDataArray( response.app_data );
               eval( response.hovers );
-
-              $J('#sellListingsMore').css('color', '#939393');
             }
           }
         },
         onComplete: function () {
           g_bBusyLoadingMore = false;
+          $J('#sellListingsMore').css('color', '#939393');
         }
       });
     };
@@ -78,13 +81,10 @@
     $J('.market_content_block').hide();
     $J('#sellListingsTable').show();
 
-    LoadRecentListings( 'sellListingsMore', 'sell_new', 'sellListingRows' );
-    setTimeout(function () {
-      LoadRecentListings( 'sellListingsMore', 'sell_new', 'sellListingRows' );
-    }, 200);
-    setTimeout(function () {
-      LoadRecentListings( 'sellListingsMore', 'sell_new', 'sellListingRows' );
-    }, 300);
+    window.LoadRecentListings( 'sellListingsMore', 'sell_new', 'sellListingRows' );
+    window.setInterval(function () {
+      window.LoadRecentListings( 'sellListingsMore', 'sell_new', 'sellListingRows' );
+    }, response.rate);
 
   });
 
