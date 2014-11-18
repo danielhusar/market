@@ -4,7 +4,13 @@
   $J('body').append('<div id="hold" style="display:none;"></div>');
   var cache = {};
 
-  chrome.runtime.sendMessage('pakdjbidllacainmhhdoejaoeahkjjja', {action: 'getstorage'}, function (response) {
+  //get the options
+  chrome.runtime.sendMessage('pakdjbidllacainmhhdoejaoeahkjjja', {action: 'getstorage'}, init);
+  chrome.runtime.sendMessage('dcfkokhhoohiomnglonbeofjplakiilm', {action: 'getstorage'}, init);
+
+
+  //main function that is executed after we get our options
+  function init (response) {
 
     var whitelistRegexp = new RegExp(response.weapons.replace(/^\,|\,$/g, '').replace(/\,/gi, '|'), 'gi');
 
@@ -17,7 +23,6 @@
 
       var elShowMore = $(id);
       var elRows = $(rows);
-
 
       g_bBusyLoadingMore = true;
       new Ajax.Request( 'http://steamcommunity.com/market/recent', {
@@ -42,7 +47,7 @@
                 var text = $J(this).html();
                 var name = $J(this).find('.market_listing_item_name_link').text().trim();
                 var price = $J(this).find('.market_listing_price').text().trim();
-                var ident = (name + price).replace(/(\r\n|\n|\r)/gm,'').replace(/\s/g, '-');
+                var ID = (name + price).replace(/(\r\n|\n|\r)/gm,'').replace(/\s/g, '-');
 
                 if (!text) {
                   $J(this).remove();
@@ -50,11 +55,11 @@
                   var csgo = text.match('<span class="market_listing_game_name">Counter-Strike: Global Offensive</span>');
                   var whitelist = name.match(whitelistRegexp);
 
-                  if ((!csgo || !whitelist) || cache[ident]) {
+                  if ((!csgo || !whitelist) || cache[ID]) {
                     $J(this).remove();
                   }
 
-                  cache[ident] = true;
+                  cache[ID] = true;
                 }
               });
               response.results_html = $J('#hold').html();
@@ -86,6 +91,6 @@
       window.LoadRecentListings( 'sellListingsMore', 'sell_new', 'sellListingRows' );
     }, response.rate);
 
-  });
+  }
 
 })(this, this.document, this.$J);

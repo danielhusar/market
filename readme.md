@@ -7,6 +7,7 @@ Requires at least chrome 40.x
 ## Installation
 
 Load it as unpacked extension. (I'm not going to submit it to chrome store)
+Change your app id in home.js on line 8 to match installed app id.
 
 ## What it does
 

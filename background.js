@@ -9,7 +9,7 @@
   }
 
 
-  chrome.runtime.onMessageExternal.addListener( function(request, sender, sendResponse) {
+  chrome.runtime.onMessageExternal.addListener(function (request, sender, sendResponse) {
     if (request.action === 'getstorage') {
       settings(sendResponse);
       return true;
