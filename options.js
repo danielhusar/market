@@ -8,10 +8,10 @@
     chrome.storage.sync.set({
       weapons: weapons,
       rate: rate
-    }, function() {
+    }, function () {
       var status = document.getElementById('status');
       status.textContent = 'Options saved.';
-      setTimeout(function() {
+      setTimeout(function () {
         status.textContent = '';
       }, 750);
     });
@@ -21,7 +21,7 @@
     chrome.storage.sync.get({
       weapons: 'knife,karambit,bayonet,awp,m4a4,m4a1,ak-47,glock-18',
       rate: 200
-    }, function(data) {
+    }, function (data) {
       document.getElementById('items').value = data.weapons;
       document.getElementById('rate').value = data.rate;
     });
