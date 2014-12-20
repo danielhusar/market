@@ -2,7 +2,6 @@
 
 > Steam market modification for counter strike global offensive. I made this extension for my friend who is addicted to the market :)
 
-Requires at least chrome 40.x 
 
 ## Installation
 
