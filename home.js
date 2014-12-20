@@ -5,9 +5,8 @@
   var cache = {};
 
   //get the options
-  chrome.runtime.sendMessage('pakdjbidllacainmhhdoejaoeahkjjja', {action: 'getstorage'}, init);
-  chrome.runtime.sendMessage('dcfkokhhoohiomnglonbeofjplakiilm', {action: 'getstorage'}, init);
-
+  var id = $J('[data-app-id]').data('appId');
+  chrome.runtime.sendMessage(id, {action: 'getstorage'}, init);
 
   //main function that is executed after we get our options
   function init (response) {
